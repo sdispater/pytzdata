@@ -1,0 +1,4 @@
+include README.rst LICENSE
+recursive-include pytzdata/zoneinfo *
+recursive-exclude tests *
+recursive-exclude benchmark *
