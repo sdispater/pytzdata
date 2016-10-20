@@ -8,7 +8,7 @@ import subprocess
 
 from urllib.request import urlopen
 from contextlib import closing
-from distutils.dir_util import copy_tree
+from distutils.dir_util import copy_tree, remove_tree
 from cleo import Command
 
 
@@ -83,7 +83,7 @@ class MakeCommand(Command):
         with open(os.path.join(dest_path, 'version')) as f:
             version = f.read().strip()
 
-        self.write('  <comment>Building</> version <fg=cyan>{}</>'.format(version))
+        self.write('<comment>Building</> version <fg=cyan>{}</>'.format(version))
         os.chdir(dest_path)
 
         with open(os.devnull, 'w') as temp:
@@ -98,8 +98,12 @@ class MakeCommand(Command):
 
     def copy(self):
         self.line('[<comment>Copying tzdata</>]')
-        tzdata_dir = os.path.join(self.path, 'tz', 'etc', 'zoneinfo')
-        local_dir = os.path.join(os.path.dirname(__file__), '..', 'zoneinfo')
+        tzdata_dir = os.path.realpath(os.path.join(self.path, 'tz', 'etc', 'zoneinfo'))
+        local_dir = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'zoneinfo'))
+        self.line('<comment>Copying <fg=cyan>{}</> to <fg=cyan>{}</></>'.format(
+            tzdata_dir, local_dir
+        ))
+        remove_tree(local_dir)
         copy_tree(tzdata_dir, local_dir)
 
     def clean(self):
