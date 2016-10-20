@@ -2,9 +2,9 @@
 
 from pytzdata.version import VERSION, OLSON_VERSION
 
-EXPECTED_VERSION = '2016.7'
+EXPECTED_VERSION = '2016.8'
 
-EXPECTED_OLSON_VERSION = '2016g'
+EXPECTED_OLSON_VERSION = '2016h'
 
 
 def test_version():
