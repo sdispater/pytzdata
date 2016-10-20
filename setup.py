@@ -31,7 +31,7 @@ kwargs = dict(
     url='https://github.com/sdispater/pytzdata',
     download_url='https://github.com/sdispater/pytzdata/archive/%s.tar.gz' % __version__,
     packages=find_packages(exclude=['tests']),
-    install_requires=['cleo'],
+    install_requires=[],
     include_package_data=True,
     tests_require=['pytest'],
     test_suite='nose.collector',
