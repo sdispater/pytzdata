@@ -6,6 +6,14 @@ from .exceptions import TimezoneNotFound
 from ._compat import FileNotFoundError
 
 
+DEFAULT_DIRECTORY = os.path.join(
+    os.path.dirname(__file__),
+    'zoneinfo'
+)
+
+_DIRECTORY = os.getenv('PYTZDATA_TZDATADIR', DEFAULT_DIRECTORY)
+
+
 def tz_file(name):
     """
     Open a timezone file from the zoneinfo subdir for reading.
@@ -50,10 +58,18 @@ def tz_path(name):
         if part == os.path.pardir or os.path.sep in part:
             raise ValueError('Bad path segment: %r' % part)
 
-    filepath = os.path.join(os.path.dirname(__file__),
-                            'zoneinfo', *name_parts)
+    filepath = os.path.join(_DIRECTORY, *name_parts)
 
     if not os.path.exists(filepath):
         raise TimezoneNotFound('Timezone {} not found at {}'.format(name, filepath))
 
     return filepath
+
+
+def set_directory(directory=None):
+    global _DIRECTORY
+
+    if directory is None:
+        directory = os.getenv('PYTZDATA_TZDATADIR', DEFAULT_DIRECTORY)
+
+    _DIRECTORY = directory

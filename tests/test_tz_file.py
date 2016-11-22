@@ -3,8 +3,22 @@
 import os
 import pytest
 
-from pytzdata import tz_file
+from pytzdata import tz_file, set_directory
 from pytzdata.exceptions import TimezoneNotFound
+
+
+def setup_module(module):
+    if 'PYTZDATA_TZDATADIR' in os.environ:
+        del os.environ['PYTZDATA_TZDATADIR']
+
+    set_directory()
+
+
+def teardown_module(module):
+    if 'PYTZDATA_TZDATADIR' in os.environ:
+        del os.environ['PYTZDATA_TZDATADIR']
+
+    set_directory()
 
 
 def test_tz_file():
