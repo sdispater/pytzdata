@@ -1,4 +1,4 @@
-Pendulum
+Pytzdata
 ########
 
 .. image:: https://travis-ci.org/sdispater/pytzdata.png
