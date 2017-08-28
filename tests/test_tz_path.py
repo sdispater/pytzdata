@@ -29,10 +29,17 @@ def test_tz_path():
 
     assert filepath == tz_path('Europe/Paris')
 
+
 def test_tz_path_not_found():
     with pytest.raises(TimezoneNotFound):
         tz_path('Invalid')
 
+
 def test_tz_path_invalid_name():
     with pytest.raises(ValueError):
         tz_path('Europe/../Paris')
+
+
+def test_tz_path_empty_string():
+    with pytest.raises(ValueError):
+        tz_path('')

@@ -53,7 +53,11 @@ def tz_path(name):
 
     :rtype: str
     """
+    if not name:
+        raise ValueError('Invalid timezone')
+
     name_parts = name.lstrip('/').split('/')
+
     for part in name_parts:
         if part == os.path.pardir or os.path.sep in part:
             raise ValueError('Bad path segment: %r' % part)
