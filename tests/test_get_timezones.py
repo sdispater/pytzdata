@@ -10,6 +10,7 @@ def test_get_timezones():
     zones = pytzdata.get_timezones()
 
     assert 'America/New_York' in zones
+    assert 'America/Argentina/Buenos_Aires' in zones
 
 
 def test_get_timezones_custom_path():

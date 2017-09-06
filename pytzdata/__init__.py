@@ -97,19 +97,20 @@ def get_timezones():
     :rtype: tuple
     """
     base_dir = _DIRECTORY
-    pattern = os.path.join(base_dir, '**', '*')
     zones = ()
 
-    for zone in glob.glob(pattern, recursive=True):
-        if os.path.isdir(zone):
-            continue
+    for root, dirs, files in os.walk(base_dir):
+        for basename in files:
+            zone = os.path.join(root, basename)
+            if os.path.isdir(zone):
+                continue
 
-        zone = os.path.relpath(zone, base_dir)
+            zone = os.path.relpath(zone, base_dir)
 
-        if _get_suffix(zone) or zone in INVALID_ZONES:
-            continue
+            if _get_suffix(zone) or zone in INVALID_ZONES:
+                continue
 
-        zones = zones + (zone,)
+            zones = zones + (zone,)
 
     return zones
 
