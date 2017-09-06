@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import os
+import glob
 
 from .exceptions import TimezoneNotFound
+from ._timezones import timezones
 from ._compat import FileNotFoundError
 
 
@@ -12,6 +14,10 @@ DEFAULT_DIRECTORY = os.path.join(
 )
 
 _DIRECTORY = os.getenv('PYTZDATA_TZDATADIR', DEFAULT_DIRECTORY)
+
+_TIMEZONES = {}
+
+INVALID_ZONES = ['Factory', 'localtime', 'posixrules']
 
 
 def tz_file(name):
@@ -77,3 +83,40 @@ def set_directory(directory=None):
         directory = os.getenv('PYTZDATA_TZDATADIR', DEFAULT_DIRECTORY)
 
     _DIRECTORY = directory
+
+
+def get_timezones():
+    """
+    Get the supported timezones.
+
+    The list will be cached unless you set the "fresh" attribute to True.
+
+    :param fresh: Whether to get a fresh list or not
+    :type fresh: bool
+
+    :rtype: tuple
+    """
+    base_dir = _DIRECTORY
+    pattern = os.path.join(base_dir, '**', '*')
+    zones = ()
+
+    for zone in glob.glob(pattern, recursive=True):
+        if os.path.isdir(zone):
+            continue
+
+        zone = os.path.relpath(zone, base_dir)
+
+        if _get_suffix(zone) or zone in INVALID_ZONES:
+            continue
+
+        zones = zones + (zone,)
+
+    return zones
+
+
+def _get_suffix(name):
+    i = name.rfind('.')
+    if 0 < i < len(name) - 1:
+        return name[i:]
+    else:
+        return ''

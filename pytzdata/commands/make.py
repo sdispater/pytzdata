@@ -47,6 +47,7 @@ class MakeCommand(Command):
         self.line('')
         self.clean()
         self.line('')
+        self.call('zones:dump')
 
     def download(self):
         self.line('[<comment>Downloading archives</>]')
