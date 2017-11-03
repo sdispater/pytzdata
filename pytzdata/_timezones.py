@@ -3,7 +3,6 @@
 timezones = ('CST6CDT',
              'Poland',
              'Kwajalein',
-             'leapseconds',
              'MST',
              'NZ',
              'Universal',

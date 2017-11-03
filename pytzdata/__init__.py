@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import os
-import glob
 
 from .exceptions import TimezoneNotFound
 from ._timezones import timezones
@@ -17,7 +16,7 @@ _DIRECTORY = os.getenv('PYTZDATA_TZDATADIR', DEFAULT_DIRECTORY)
 
 _TIMEZONES = {}
 
-INVALID_ZONES = ['Factory', 'localtime', 'posixrules']
+INVALID_ZONES = ['Factory', 'leapseconds', 'localtime', 'posixrules']
 
 
 def tz_file(name):
