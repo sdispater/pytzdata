@@ -49,6 +49,7 @@ def tz_file(name):
 
         raise
 
+
 def tz_path(name):
     """
     Return the path to a timezone file.
@@ -106,12 +107,11 @@ def get_timezones():
 
             zone = os.path.relpath(zone, base_dir)
 
-            if _get_suffix(zone) or zone in INVALID_ZONES:
-                continue
+            with open(os.path.join(root, basename), 'rb') as fd:
+                if fd.read(4) == b'TZif' and zone not in INVALID_ZONES:
+                    zones = zones + (zone,)
 
-            zones = zones + (zone,)
-
-    return zones
+    return tuple(sorted(zones))
 
 
 def _get_suffix(name):

@@ -99,7 +99,7 @@ class MakeCommand(Command):
 
     def copy(self):
         self.line('[<comment>Copying tzdata</>]')
-        tzdata_dir = os.path.realpath(os.path.join(self.path, 'tz', 'etc', 'zoneinfo'))
+        tzdata_dir = os.path.realpath(os.path.join(self.path, 'tz', 'usr', 'share', 'zoneinfo'))
         local_dir = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'zoneinfo'))
         self.line('<comment>Copying <fg=cyan>{}</> to <fg=cyan>{}</></>'.format(
             tzdata_dir, local_dir
