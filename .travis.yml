@@ -7,6 +7,8 @@ python:
   - "pypy"
 
 install:
-  - pip install -r tests-requirements.txt
+  - curl -fsS -o get-poetry.py https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py
+  - python get-poetry.py --preview
+  - poetry install -v
 
-script: py.test -q tests/
+script: poetry run pytest -q tests/

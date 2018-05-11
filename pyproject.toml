@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "pytzdata"
+version = "2018.5"
+description = "Official timezone database for Python."
+authors = [
+    "Sébastien Eustace <sebastien@eustace.io>"
+]
+license = "MIT"
+
+readme = "README.rst"
+
+homepage = "https://github.com/sdispater/pytzdata"
+repository = "https://github.com/sdispater/pytzdata"
+
+classifiers = [
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[tool.poetry.dependencies]
+python = "~2.7 || ^3.4"
+
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.3"
+cleo = "^0.6.5"
+pytest = "^3.5"
+tox = "^3.0"

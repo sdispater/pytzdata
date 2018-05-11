@@ -20,6 +20,7 @@ nosetests.xml
 .DS_Store
 .idea/*
 .python-version
+.pytest_cache
 
 /test.py
 /test_*.py
@@ -28,3 +29,6 @@ benchmark.py
 results.json
 profile.html
 /wheelhouse
+
+
+pyproject.lock

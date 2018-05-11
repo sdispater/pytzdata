@@ -8,23 +8,15 @@ list:
 # required for list
 no_targets__:
 
-# install all dependencies
-setup: setup-python
-
-release: tar wheel
+release:
+	@poetry build
 
 publish:
-	@python -m twine upload dist/pytzdata-$(RELEASE)*
-
-tar:
-	@python setup.py sdist --formats=gztar
-
-wheel:
-	@pip wheel --no-index --no-deps --wheel-dir dist dist/pytzdata-$(RELEASE).tar.gz
+	@poetry publish --no-build
 
 # test your application (tests in the tests/ directory)
 test:
-	@py.test tests/ -sq
+	@poetry run pytest tests/ -sq
 
 # run tests against all supported python versions
 tox:
