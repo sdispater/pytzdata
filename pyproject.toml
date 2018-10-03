@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "pytzdata"
 version = "2018.5"
-description = "Official timezone database for Python."
+description = "The Olson timezone database for Python."
 authors = [
     "Sébastien Eustace <sebastien@eustace.io>"
 ]
