@@ -5,7 +5,7 @@ Pytzdata
    :alt: Pytzdata Build status
    :target: https://travis-ci.org/sdispater/pytzdata
 
-Official timezone database for Python.
+The Olson timezone database for Python.
 
 Supports Python **2.7+** and **3.5+**.
 
