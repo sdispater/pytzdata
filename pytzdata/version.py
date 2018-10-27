@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
 
-VERSION = "2018.6"
+VERSION = "2018.7"
 
-OLSON_VERSION = "2018f"
+OLSON_VERSION = "2018g"
