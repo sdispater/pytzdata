@@ -31,4 +31,4 @@ profile.html
 /wheelhouse
 
 
-pyproject.lock
+poetry.lock

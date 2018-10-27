@@ -25,9 +25,9 @@ tox:
 # Build tzdata
 data:
 	@python -m pytzdata.commands.app make
-	@autopep8 pytzdata/_timezones.py -i
+	@black pytzdata/_timezones.py
 
 # Dump timezones
 zones:
 	@python -m pytzdata.commands.app zones:dump
-	@autopep8 pytzdata/_timezones.py -i
+	@black pytzdata/_timezones.py
