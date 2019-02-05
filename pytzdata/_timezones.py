@@ -302,6 +302,7 @@ timezones = (
     "Asia/Pontianak",
     "Asia/Pyongyang",
     "Asia/Qatar",
+    "Asia/Qostanay",
     "Asia/Qyzylorda",
     "Asia/Rangoon",
     "Asia/Riyadh",
