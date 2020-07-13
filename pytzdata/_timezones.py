@@ -176,6 +176,7 @@ timezones = (
     "America/North_Dakota/Beulah",
     "America/North_Dakota/Center",
     "America/North_Dakota/New_Salem",
+    "America/Nuuk",
     "America/Ojinaga",
     "America/Panama",
     "America/Pangnirtung",

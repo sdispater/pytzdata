@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
 
-VERSION = "2019.3"
+VERSION = "2020.1"
 
-OLSON_VERSION = "2019c"
+OLSON_VERSION = "2020a"
