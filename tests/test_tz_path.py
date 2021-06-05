@@ -30,6 +30,15 @@ def test_tz_path():
     assert filepath == tz_path('Europe/Paris')
 
 
+def test_tz_path_is_dir():
+    here = os.path.realpath(os.path.dirname(__file__))
+    dirpath = os.path.realpath(
+        os.path.join(here, '..', 'pytzdata', 'zoneinfo', 'Europe')
+    )
+    with pytest.raises(TimezoneNotFound):
+        tz_path(dirpath)
+
+
 def test_tz_path_not_found():
     with pytest.raises(TimezoneNotFound):
         tz_path('Invalid')
