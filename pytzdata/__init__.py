@@ -70,7 +70,7 @@ def tz_path(name):
 
     filepath = os.path.join(_DIRECTORY, *name_parts)
 
-    if not os.path.exists(filepath):
+    if not os.path.isfile(filepath):
         raise TimezoneNotFound('Timezone {} not found at {}'.format(name, filepath))
 
     return filepath
