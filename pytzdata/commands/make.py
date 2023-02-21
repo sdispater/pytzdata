@@ -20,6 +20,7 @@ class MakeCommand(Command):
         {version? : The version to make.}
         {--path= : The destination directory.}
     """
+    name = "make"
 
     FILES = ["tzcode-latest.tar.gz", "tzdata-latest.tar.gz"]
 
