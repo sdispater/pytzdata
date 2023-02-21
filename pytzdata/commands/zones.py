@@ -13,6 +13,7 @@ class ZonesCommand(Command):
 
     zones:dump
     """
+    name = "zones"
 
     TEMPLATE = """# -*- coding: utf-8 -*-
 
